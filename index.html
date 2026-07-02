@@ -1644,8 +1644,287 @@ a, button { font:inherit; color:inherit; }
 <meta name="apple-mobile-web-app-title" content="Sunset Beach">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+
+<style>
+/* Programma serate V2 - timeline elegante */
+.sb-program{
+  margin-top:18px;
+  border-radius:30px;
+  padding:18px 14px 16px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255,139,0,.24), transparent 34%),
+    radial-gradient(circle at 100% 0%, rgba(224,47,132,.18), transparent 36%),
+    rgba(255,250,242,.96);
+  border:1px solid rgba(255,255,255,.82);
+  box-shadow:0 14px 32px rgba(0,0,0,.14);
+  overflow:hidden;
+}
+.sb-program-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:15px;
+  padding:0 3px;
+}
+.sb-program-head span{
+  display:inline-block;
+  color:#e54822;
+  font-size:12px;
+  font-weight:1000;
+  text-transform:uppercase;
+  letter-spacing:.9px;
+  margin-bottom:5px;
+}
+.sb-program-head h2{
+  margin:0;
+  color:#071528;
+  font-size:28px;
+  line-height:1;
+  font-weight:1000;
+  text-transform:uppercase;
+  letter-spacing:-.8px;
+}
+.sb-program-icon{
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  color:white;
+  font-size:28px;
+  background:linear-gradient(135deg,#ff8b00,#e02f84);
+  box-shadow:0 9px 20px rgba(0,0,0,.18);
+}
+.sb-event-list{
+  display:grid;
+  gap:10px;
+}
+.sb-event{
+  position:relative;
+  display:grid;
+  grid-template-columns:62px 2px 1fr 42px;
+  align-items:center;
+  gap:12px;
+  padding:12px 10px;
+  border-radius:22px;
+  background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,239,214,.92));
+  border:1px solid rgba(229,72,34,.12);
+  box-shadow:0 8px 18px rgba(0,0,0,.07);
+  overflow:hidden;
+}
+.sb-event::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:linear-gradient(180deg,#ff8b00,#e02f84);
+}
+.sb-date{
+  position:relative;
+  z-index:2;
+  width:62px;
+  height:62px;
+  border-radius:18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:#071528;
+  color:white;
+  box-shadow:inset 0 -3px 0 rgba(255,255,255,.10),0 7px 14px rgba(0,0,0,.16);
+}
+.sb-date strong{
+  display:block;
+  font-size:25px;
+  line-height:.9;
+  font-weight:1000;
+}
+.sb-date span{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  font-weight:1000;
+  letter-spacing:.8px;
+}
+.sb-line{
+  width:2px;
+  height:48px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#ff8b00,#e02f84);
+  opacity:.55;
+}
+.sb-event-body{
+  min-width:0;
+  position:relative;
+  z-index:2;
+}
+.sb-theme{
+  color:#e54822;
+  font-size:11px;
+  line-height:1;
+  font-weight:1000;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  margin-bottom:5px;
+}
+.sb-event-body h3{
+  margin:0;
+  color:#071528;
+  font-size:17px;
+  line-height:1.05;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+.sb-event-body p{
+  margin:5px 0 0;
+  color:#6b4b3a;
+  font-size:12px;
+  font-weight:800;
+}
+.sb-event-icon{
+  position:relative;
+  z-index:2;
+  width:42px;
+  height:42px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  font-size:24px;
+  background:rgba(255,139,0,.13);
+}
+@media(max-width:430px){
+  .sb-program{
+    padding:16px 12px 14px;
+  }
+  .sb-program-head h2{
+    font-size:24px;
+  }
+  .sb-program-icon{
+    width:48px;
+    height:48px;
+    border-radius:16px;
+    font-size:25px;
+  }
+  .sb-event{
+    grid-template-columns:56px 2px 1fr 34px;
+    gap:9px;
+    padding:11px 8px;
+    border-radius:20px;
+  }
+  .sb-date{
+    width:56px;
+    height:56px;
+    border-radius:16px;
+  }
+  .sb-date strong{
+    font-size:22px;
+  }
+  .sb-line{
+    height:42px;
+  }
+  .sb-event-body h3{
+    font-size:15px;
+  }
+  .sb-event-body p{
+    font-size:11px;
+  }
+  .sb-event-icon{
+    width:34px;
+    height:34px;
+    border-radius:12px;
+    font-size:20px;
+  }
+}
+</style>
+
+
+<style>
+.program-poster{margin-top:20px;border-radius:30px;padding:20px 12px 18px;color:white;background:radial-gradient(circle at 8% 0%,rgba(255,139,0,.24),transparent 30%),radial-gradient(circle at 92% 0%,rgba(224,47,132,.20),transparent 32%),linear-gradient(180deg,#071528 0%,#06101e 100%);border:1px solid rgba(255,190,95,.38);box-shadow:0 16px 36px rgba(0,0,0,.28);overflow:hidden;position:relative}
+.program-poster::before,.program-poster::after{content:"🌴";position:absolute;color:rgba(16,185,129,.20);font-size:100px;bottom:-36px;z-index:0}.program-poster::before{left:-28px;transform:rotate(-18deg)}.program-poster::after{right:-28px;transform:rotate(18deg) scaleX(-1)}
+.poster-title{position:relative;z-index:2;text-align:center;padding:2px 8px 16px}.poster-title span{display:block;color:#ffb84a;font-size:12px;text-transform:uppercase;letter-spacing:3px;font-weight:1000;margin-bottom:8px}.poster-title h2{margin:0;color:white;font-size:clamp(34px,8vw,56px);line-height:.9;font-weight:1000;text-transform:uppercase;letter-spacing:-1px;text-shadow:0 4px 18px rgba(0,0,0,.45)}
+.poster-divider{width:160px;margin:14px auto 0;color:#ffb84a;font-size:18px;display:flex;align-items:center;justify-content:center;gap:10px}.poster-divider::before,.poster-divider::after{content:"";height:2px;flex:1;background:linear-gradient(90deg,transparent,#ffb84a)}.poster-divider::after{background:linear-gradient(90deg,#ffb84a,transparent)}
+.poster-list{position:relative;z-index:2;display:grid;border-radius:22px;overflow:hidden;border:1px solid rgba(255,184,74,.35);background:rgba(0,0,0,.14)}
+.poster-row{display:grid;grid-template-columns:82px 50px minmax(0,1.15fr) minmax(0,.95fr);gap:12px;align-items:center;min-height:86px;padding:10px 12px;border-bottom:1px solid rgba(255,184,74,.28)}.poster-row:last-child{border-bottom:0}
+.poster-date{height:70px;border-radius:10px;color:#071528;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,#ffd66a,#f2a42d);box-shadow:inset 0 -4px 0 rgba(0,0,0,.08);position:relative;overflow:hidden}.poster-date span{font-size:11px;line-height:1;font-weight:1000;text-transform:uppercase}.poster-date strong{font-size:31px;line-height:.9;font-weight:1000}.poster-date em{font-style:normal;font-size:11px;font-weight:1000}
+.poster-music-icon{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;font-size:30px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);filter:drop-shadow(0 4px 8px rgba(0,0,0,.25))}
+.poster-band{min-width:0}.poster-band small{display:block;color:#ffb84a;font-size:11px;font-weight:1000;text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px}.poster-band h3{margin:0;color:white;font-size:clamp(20px,4.8vw,31px);line-height:1;font-weight:1000;text-transform:uppercase;letter-spacing:.3px;text-shadow:0 3px 10px rgba(0,0,0,.45)}
+.poster-theme{display:grid;grid-template-columns:46px 1fr;gap:10px;align-items:center;padding-left:13px;border-left:1px solid rgba(255,255,255,.26);min-width:0}.poster-food-icon{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;font-size:28px;background:rgba(255,255,255,.08)}
+.poster-theme strong{display:block;color:#ff4b3e;font-size:15px;line-height:1;font-weight:1000;text-transform:uppercase}.poster-theme span{display:block;margin-top:5px;color:white;font-size:13px;line-height:1.18;font-weight:650}.empty-theme strong{color:#ffb84a}.empty-theme span{color:rgba(255,255,255,.78)}
+@media(max-width:620px){.poster-row{grid-template-columns:72px 42px 1fr;grid-template-areas:"date icon band" "date theme theme";gap:8px 10px;min-height:auto;padding:10px}.poster-date{grid-area:date;height:80px}.poster-music-icon{grid-area:icon;width:42px;height:42px;border-radius:13px;font-size:25px}.poster-band{grid-area:band}.poster-theme{grid-area:theme;border-left:0;padding-left:0;grid-template-columns:34px 1fr;gap:8px;padding-top:2px}.poster-food-icon{width:34px;height:34px;border-radius:12px;font-size:21px}.poster-theme strong{font-size:13px}.poster-theme span{font-size:12px}.poster-band h3{font-size:clamp(18px,5.3vw,24px)}}
+</style>
+
+
+<style>
+.sb-menu{margin-top:18px;border-radius:30px;padding:18px 14px 16px;background:radial-gradient(circle at 0% 0%,rgba(255,139,0,.24),transparent 34%),radial-gradient(circle at 100% 0%,rgba(224,47,132,.18),transparent 36%),rgba(255,250,242,.96);border:1px solid rgba(255,255,255,.82);box-shadow:0 14px 32px rgba(0,0,0,.14);overflow:hidden}
+.sb-menu-head{text-align:center;margin-bottom:14px}.sb-menu-head span{color:#e54822;font-size:12px;font-weight:1000;text-transform:uppercase;letter-spacing:1.2px}.sb-menu-head h2{margin:5px 0 6px;color:#071528;font-size:36px;line-height:.9;font-weight:1000;text-transform:uppercase}.sb-menu-head p{margin:0;color:#6b4b3a;font-size:13px;font-weight:750}
+.sb-menu-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}.sb-menu-tab{border:0;border-radius:999px;padding:10px 8px;background:#fff0d8;color:#071528;font-weight:1000;font-family:inherit;box-shadow:inset 0 0 0 1px rgba(229,72,34,.12)}.sb-menu-tab.active{color:white;background:linear-gradient(135deg,#ff8b00,#e02f84);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+.sb-menu-panel{display:none}.sb-menu-panel.active{display:block;animation:menuFade .22s ease both}@keyframes menuFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sb-menu-card{min-height:150px;border-radius:24px;padding:18px;color:white;display:flex;align-items:flex-end;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.78)),radial-gradient(circle at 20% 12%,rgba(255,255,255,.24),transparent 34%),linear-gradient(135deg,#ff8b00,#e02f84);box-shadow:0 12px 28px rgba(0,0,0,.20);overflow:hidden}.sb-menu-card small{font-size:12px;font-weight:1000;text-transform:uppercase;letter-spacing:1px;color:#ffcf72}.sb-menu-card h3{margin:4px 0 0;font-size:26px;line-height:1;font-weight:1000;text-transform:uppercase}
+.hero-food{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.78)),radial-gradient(circle at 18% 12%,rgba(255,180,70,.35),transparent 30%),linear-gradient(135deg,#d84a16,#071528)}.hero-crostoni{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.78)),radial-gradient(circle at 80% 16%,rgba(255,220,130,.35),transparent 32%),linear-gradient(135deg,#c77822,#8f1715)}
+.sb-menu-list{display:grid;gap:10px;margin-top:12px}.sb-menu-group{padding:14px;border-radius:18px;background:rgba(255,255,255,.84);border:1px solid rgba(229,72,34,.10);box-shadow:0 7px 16px rgba(0,0,0,.06)}.sb-menu-group h4{margin:0 0 8px;color:#c52822;font-size:16px;font-weight:1000;text-transform:uppercase}.sb-menu-group p{margin:7px 0 0;color:#1f2937;font-size:14px;line-height:1.25;font-weight:760}
+.sb-base{margin:12px 0;padding:15px;border-radius:18px;background:#071528;color:white;text-align:center}.sb-base strong{display:block;color:#ffb84a;text-transform:uppercase;font-weight:1000;margin-bottom:4px}.sb-base span{font-weight:800}.sb-chip-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.sb-chip-grid span{padding:9px 12px;border-radius:999px;background:#fff0d8;color:#071528;font-size:13px;font-weight:900;box-shadow:inset 0 0 0 1px rgba(229,72,34,.12)}
+@media(max-width:430px){.sb-menu{padding:16px 12px 14px}.sb-menu-head h2{font-size:32px}.sb-menu-tab{font-size:13px;padding:9px 6px}.sb-menu-card{min-height:132px}.sb-menu-card h3{font-size:22px}}
+</style>
+<script>
+document.addEventListener('click',function(e){const btn=e.target.closest('.sb-menu-tab');if(!btn)return;const target=btn.getAttribute('data-menu-tab');document.querySelectorAll('.sb-menu-tab').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.sb-menu-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');const panel=document.getElementById('menu-'+target);if(panel)panel.classList.add('active');});
+</script>
+
+
+<style>
+.sb-install-btn{position:fixed;z-index:9990;right:14px;bottom:92px;display:inline-flex;align-items:center;gap:6px;padding:11px 14px;border-radius:999px;background:linear-gradient(135deg,#ff8b00,#e02f84);color:white!important;font-size:13px;font-weight:1000;text-decoration:none!important;box-shadow:0 12px 28px rgba(0,0,0,.35)}
+.sb-install-modal{position:fixed;inset:0;z-index:99999;display:none;align-items:flex-end;justify-content:center;padding:18px;background:rgba(0,0,0,.55)}
+.sb-install-modal.show{display:flex}
+.sb-install-card{width:min(430px,100%);position:relative;padding:22px 18px 18px;border-radius:24px;background:#fff4df;color:#071528;box-shadow:0 18px 46px rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.7)}
+.sb-install-card h3{margin:0 0 10px;color:#c52822;font-size:24px;line-height:1;font-weight:1000;text-transform:uppercase}
+.sb-install-card p{margin:0;font-size:15px;line-height:1.35;font-weight:800}
+.sb-install-close{position:absolute;top:10px;right:10px;width:34px;height:34px;border:0;border-radius:50%;display:grid;place-items:center;background:#071528;color:white;font-size:22px;font-weight:900}
+@media(max-width:430px){.sb-install-btn{right:10px;bottom:86px;padding:10px 12px;font-size:12px}}
+</style>
+<script>
+let sbDeferredPrompt=null;
+window.addEventListener('beforeinstallprompt',function(event){event.preventDefault();sbDeferredPrompt=event;});
+function sbIsIOS(){return /iphone|ipad|ipod/i.test(window.navigator.userAgent);}
+function sbIsStandalone(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;}
+function sbOpenInstallHelp(){
+  const modal=document.getElementById('sbInstallModal');
+  const text=document.getElementById('sbInstallText');
+  if(sbIsStandalone()){text.innerHTML='Hai già aggiunto Sunset Beach alla schermata Home.';}
+  else if(sbIsIOS()){text.innerHTML='Su iPhone apri questo sito con Safari, tocca <strong>Condividi</strong> ⬆️ e poi <strong>Aggiungi alla schermata Home</strong>.';}
+  else{text.innerHTML='Apri il menu del browser ⋮ e scegli <strong>Installa app</strong> oppure <strong>Aggiungi alla schermata Home</strong>.';}
+  modal.classList.add('show');
+}
+document.addEventListener('click',async function(e){
+  const installBtn=e.target.closest('#sbInstallBtn');
+  const closeBtn=e.target.closest('#sbInstallClose');
+  if(installBtn){
+    e.preventDefault();
+    if(sbDeferredPrompt&&!sbIsStandalone()){
+      sbDeferredPrompt.prompt();
+      await sbDeferredPrompt.userChoice;
+      sbDeferredPrompt=null;
+    }else{sbOpenInstallHelp();}
+  }
+  if(closeBtn||e.target.id==='sbInstallModal'){
+    e.preventDefault();
+    document.getElementById('sbInstallModal')?.classList.remove('show');
+  }
+});
+</script>
+
 </head>
 <body>
+
+<a class="sb-install-btn" href="#" id="sbInstallBtn">📲 Installa App</a>
+<div class="sb-install-modal" id="sbInstallModal">
+  <div class="sb-install-card">
+    <button class="sb-install-close" id="sbInstallClose">×</button>
+    <h3>Installa Sunset Beach</h3>
+    <p id="sbInstallText">Apri il menu del browser e scegli “Aggiungi alla schermata Home”.</p>
+  </div>
+</div>
+
 <div class="app" id="home">
   <div class="top-buttons">
     <a class="floating" href="#programma" aria-label="Programma">☰</a>
@@ -1768,109 +2047,294 @@ a, button { font:inherit; color:inherit; }
       </div>
     </section>
 
-    <section class="panel" id="programma">
-      <div class="panel-head">
-        <h2>📅 Programma delle serate</h2>
-        <span class="more">vedi tutte</span>
-      </div>
-      <div class="event-list">
+    
+
+<section class="program-poster" id="programma">
+  <div class="poster-title">
+    <span>Live music & food nights</span>
+    <h2>Programma serate</h2>
+    <div class="poster-divider">★</div>
+  </div>
+  <div class="poster-list">
+    
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>GIOVEDÌ</span>
+          <strong>16</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🥁</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>AREA21</h3>
+        </div>
         
-      <button class="event-row" onclick="openEvent('16 LUG', 'GIOVEDÌ', `AREA21`, ``, '🎤')">
-        <span class="event-date"><b>16</b><small>LUG<br>GIO</small></span>
-        <span class="event-band">AREA21<small></small></span>
-        <span class="event-emoji">🎤</span>
-        <span class="chev">›</span>
-      </button>
+        <div class="poster-theme">
+          <div class="poster-food-icon">⭐</div>
+          <div>
+            <strong>APERTURA</strong>
+            <span>Serata di apertura Sunset Beach</span>
+          </div>
+        </div>
+      </article>
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>VENERDÌ</span>
+          <strong>17</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🎙️</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>GOLD5</h3>
+        </div>
+        
+        <div class="poster-theme">
+          <div class="poster-food-icon">🍔</div>
+          <div>
+            <strong>SERATA AMERICANA</strong>
+            <span>Hamburger e Patatine</span>
+          </div>
+        </div>
+      </article>
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>SABATO</span>
+          <strong>18</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🎸</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>BALDO DEGLI UBALDI</h3>
+        </div>
+        
+        <div class="poster-theme empty-theme">
+          <div class="poster-food-icon">🌴</div>
+          <div>
+            <strong>LIVE MUSIC</strong>
+            <span>Musica dal vivo al tramonto</span>
+          </div>
+        </div>
+      </article>
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>DOMENICA</span>
+          <strong>19</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🎸</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>ONESTEPOVER</h3>
+        </div>
+        
+        <div class="poster-theme">
+          <div class="poster-food-icon">🍝</div>
+          <div>
+            <strong>SERATA ROMANA</strong>
+            <span>Carbonara e Amatriciana</span>
+          </div>
+        </div>
+      </article>
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>LUNEDÌ</span>
+          <strong>20</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🪗</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>TUTTACOLPADICENERENTOLA</h3>
+        </div>
+        
+        <div class="poster-theme">
+          <div class="poster-food-icon">🥟</div>
+          <div>
+            <strong>SERATA GARFAGNINA</strong>
+            <span>Tordelli al ragù e Porchetta</span>
+          </div>
+        </div>
+      </article>
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>MARTEDÌ</span>
+          <strong>21</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🎷</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>FUNKASTICI TRIO</h3>
+        </div>
+        
+        <div class="poster-theme">
+          <div class="poster-food-icon">🍟</div>
+          <div>
+            <strong>SERATA SCOZZESE</strong>
+            <span>Fish and Chips</span>
+          </div>
+        </div>
+      </article>
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>MERCOLEDÌ</span>
+          <strong>22</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🎺</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>FUORI DAL COMUNE</h3>
+        </div>
+        
+        <div class="poster-theme">
+          <div class="poster-food-icon">🌮</div>
+          <div>
+            <strong>SERATA MESSICANA</strong>
+            <span>Tacos</span>
+          </div>
+        </div>
+      </article>
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>GIOVEDÌ</span>
+          <strong>23</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🎹</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>HISTORY OF ROCK</h3>
+        </div>
+        
+        <div class="poster-theme">
+          <div class="poster-food-icon">🫓</div>
+          <div>
+            <strong>SERATA ROMAGNOLA</strong>
+            <span>Piadine</span>
+          </div>
+        </div>
+      </article>
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>VENERDÌ</span>
+          <strong>24</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🎸</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>ALESSANDRO CIAMPI</h3>
+        </div>
+        
+        <div class="poster-theme empty-theme">
+          <div class="poster-food-icon">🌴</div>
+          <div>
+            <strong>LIVE MUSIC</strong>
+            <span>Musica dal vivo al tramonto</span>
+          </div>
+        </div>
+      </article>
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>SABATO</span>
+          <strong>25</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🎸</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>PUNKINAIR</h3>
+        </div>
+        
+        <div class="poster-theme">
+          <div class="poster-food-icon">⚡</div>
+          <div>
+            <strong>ROCK NIGHT</strong>
+            <span>Energia live</span>
+          </div>
+        </div>
+      </article>
+      <article class="poster-row">
+        <div class="poster-date">
+          <span>DOMENICA</span>
+          <strong>26</strong>
+          <em>LUGLIO</em>
+        </div>
+        <div class="poster-music-icon">🥁</div>
+        <div class="poster-band">
+          <small>LIVE MUSIC</small>
+          <h3>PEGGY SU</h3>
+        </div>
+        
+        <div class="poster-theme">
+          <div class="poster-food-icon">🌅</div>
+          <div>
+            <strong>CHIUSURA</strong>
+            <span>Ultima serata Sunset Beach</span>
+          </div>
+        </div>
+      </article>
+  </div>
+</section>
 
-      <button class="event-row" onclick="openEvent('17 LUG', 'VENERDÌ', `GOLD 5`, `SERATA AMERICANA`, '🇺🇸')">
-        <span class="event-date"><b>17</b><small>LUG<br>VEN</small></span>
-        <span class="event-band">GOLD 5<small>SERATA AMERICANA</small></span>
-        <span class="event-emoji">🇺🇸</span>
-        <span class="chev">›</span>
-      </button>
 
-      <button class="event-row" onclick="openEvent('18 LUG', 'SABATO', `BALDO DEGLI UBALDI`, ``, '🎸')">
-        <span class="event-date"><b>18</b><small>LUG<br>SAB</small></span>
-        <span class="event-band">BALDO DEGLI UBALDI<small></small></span>
-        <span class="event-emoji">🎸</span>
-        <span class="chev">›</span>
-      </button>
 
-      <button class="event-row" onclick="openEvent('19 LUG', 'DOMENICA', `ONESTEPOVER`, `SERATA ROMANA`, '🏛️')">
-        <span class="event-date"><b>19</b><small>LUG<br>DOM</small></span>
-        <span class="event-band">ONESTEPOVER<small>SERATA ROMANA</small></span>
-        <span class="event-emoji">🏛️</span>
-        <span class="chev">›</span>
-      </button>
+    
+<section class="sb-menu" id="menu">
+  <div class="sb-menu-head">
+    <span>Sunset Beach 2026</span>
+    <h2>Menù</h2>
+    <p>Scegli la sezione e consulta tutto direttamente dal telefono.</p>
+  </div>
+  <div class="sb-menu-tabs">
+    <button class="sb-menu-tab active" data-menu-tab="drink">🍹 Bere</button>
+    <button class="sb-menu-tab" data-menu-tab="food">🥩 Cucina</button>
+    <button class="sb-menu-tab" data-menu-tab="crostoni">🥖 Crostoni</button>
+  </div>
 
-      <button class="event-row" onclick="openEvent('20 LUG', 'LUNEDÌ', `TUTTA COLPA DI CENERENTOLA`, `SERATA GARFAGNINA`, '⛰️')">
-        <span class="event-date"><b>20</b><small>LUG<br>LUN</small></span>
-        <span class="event-band">TUTTA COLPA DI CENERENTOLA<small>SERATA GARFAGNINA</small></span>
-        <span class="event-emoji">⛰️</span>
-        <span class="chev">›</span>
-      </button>
+  <div class="sb-menu-panel active" id="menu-drink">
+    <div class="sb-menu-card hero-drink"><div><small>Bevande & Cocktail</small><h3>Drink Area</h3></div></div>
+    <div class="sb-menu-list">
+      <div class="sb-menu-group"><h4>🍹 Cocktail</h4><p>Cocktail</p><p>Cocktail analcolici</p></div>
+      <div class="sb-menu-group"><h4>🍺 Birre</h4><p>Birra bionda alla spina</p><p>Birra senza glutine</p></div>
+      <div class="sb-menu-group"><h4>🥤 Bibite</h4><p>Acqua</p><p>Coca Cola lattina</p><p>Coca Cola bottiglia 1,5 L</p><p>Fanta lattina</p></div>
+      <div class="sb-menu-group"><h4>🍷 Vini & bollicine</h4><p>Vino rosso</p><p>Vino bianco</p><p>Prosecco</p></div>
+      <div class="sb-menu-group"><h4>☕ Caffetteria & amari</h4><p>Caffè</p><p>Caffè corretto</p><p>Limoncello</p><p>Grappa liscia</p><p>Amaro del Capo</p><p>Amaro Montenegro</p><p>Grappe aromatiche: liquirizia, mela verde, panna e fragola, mirtillo, caffè, nocciola</p></div>
+    </div>
+  </div>
 
-      <button class="event-row" onclick="openEvent('21 LUG', 'MARTEDÌ', `FUNKASTICI TRIO`, `SERATA SCOZZESE`, '🏴')">
-        <span class="event-date"><b>21</b><small>LUG<br>MAR</small></span>
-        <span class="event-band">FUNKASTICI TRIO<small>SERATA SCOZZESE</small></span>
-        <span class="event-emoji">🏴</span>
-        <span class="chev">›</span>
-      </button>
+  <div class="sb-menu-panel" id="menu-food">
+    <div class="sb-menu-card hero-food"><div><small>Cucina & Griglia</small><h3>L'angolo della ciccia</h3></div></div>
+    <div class="sb-menu-list">
+      <div class="sb-menu-group"><h4>🔥 Griglia</h4><p>Grigliato misto: wurstel, salsiccia, rosticciana, scamerita</p><p>Bistecca di maiale</p><p>Medaglione</p></div>
+      <div class="sb-menu-group"><h4>🥩 L'angolo della ciccia</h4><p>Wurstel alla griglia</p><p>Salsiccia alla griglia</p><p>Rosticciana alla griglia</p></div>
+      <div class="sb-menu-group"><h4>🧀 Antipasti</h4><p>Bruschetta</p><p>Tagliere con affettati, olive nostrali e formaggi</p><p>Pasta fritta</p></div>
+      <div class="sb-menu-group"><h4>🍟 Contorni</h4><p>Patate fritte</p><p>Pomodori</p></div>
+      <div class="sb-menu-group"><h4>🍫 Dolce</h4><p>Crêpes con Nutella</p></div>
+    </div>
+  </div>
 
-      <button class="event-row" onclick="openEvent('22 LUG', 'MERCOLEDÌ', `FUORI DAL COMUNE LIVE BAND`, `SERATA MESSICANA`, '🇲🇽')">
-        <span class="event-date"><b>22</b><small>LUG<br>MER</small></span>
-        <span class="event-band">FUORI DAL COMUNE LIVE BAND<small>SERATA MESSICANA</small></span>
-        <span class="event-emoji">🇲🇽</span>
-        <span class="chev">›</span>
-      </button>
+  <div class="sb-menu-panel" id="menu-crostoni">
+    <div class="sb-menu-card hero-crostoni"><div><small>Fatti i crostoni tuoi</small><h3>Componi il tuo crostone</h3></div></div>
+    <div class="sb-base"><strong>Base</strong><span>Pane + mozzarella + ingredienti a scelta</span></div>
+    <div class="sb-chip-grid">
+      <span>Prosciutto cotto</span><span>Prosciutto crudo</span><span>Salamino piccante</span><span>Salsiccia</span><span>Wurstel</span><span>Pomodorini</span><span>Salsa ai 4 formaggi</span><span>Salsa al tartufo</span><span>Rucola</span><span>Cipolla</span>
+    </div>
+  </div>
+</section>
 
-      <button class="event-row" onclick="openEvent('23 LUG', 'GIOVEDÌ', `HISTORY OF ROCK`, `SERATA ROMAGNOLA`, '🍝')">
-        <span class="event-date"><b>23</b><small>LUG<br>GIO</small></span>
-        <span class="event-band">HISTORY OF ROCK<small>SERATA ROMAGNOLA</small></span>
-        <span class="event-emoji">🍝</span>
-        <span class="chev">›</span>
-      </button>
-
-      <button class="event-row" onclick="openEvent('24 LUG', 'VENERDÌ', `ALESSANDRO CIAMPI`, ``, '🎶')">
-        <span class="event-date"><b>24</b><small>LUG<br>VEN</small></span>
-        <span class="event-band">ALESSANDRO CIAMPI<small></small></span>
-        <span class="event-emoji">🎶</span>
-        <span class="chev">›</span>
-      </button>
-
-      <button class="event-row" onclick="openEvent('25 LUG', 'SABATO', `PUNKINAIR`, ``, '🤘')">
-        <span class="event-date"><b>25</b><small>LUG<br>SAB</small></span>
-        <span class="event-band">PUNKINAIR<small></small></span>
-        <span class="event-emoji">🤘</span>
-        <span class="chev">›</span>
-      </button>
-
-      <button class="event-row" onclick="openEvent('26 LUG', 'DOMENICA', `PEGGY SU`, `CHIUSURA`, '🌅')">
-        <span class="event-date"><b>26</b><small>LUG<br>DOM</small></span>
-        <span class="event-band">PEGGY SU<small>CHIUSURA</small></span>
-        <span class="event-emoji">🌅</span>
-        <span class="chev">›</span>
-      </button>
-      </div>
-    </section>
-
-    <section class="panel" id="menu">
-      <div class="panel-head">
-        <h2>🍹 Menù</h2>
-      </div>
-      <div class="menu-box">
-        Qui inseriamo il menù definitivo: cocktail, aperitivi e food. Mandami una foto o PDF del menù e lo integro in stile locandina.
-      </div>
-    </section>
 
     <section class="footer-card" id="info">
       <a class="info" href="https://maps.app.goo.gl/rzuY1No6sh3mUMbD6" target="_blank" rel="noopener">
         <div class="info-ico">📍</div>
         <div><strong>Dove siamo</strong>Orto della Misericordia, Barga (LU)<br><small>Nel cuore della Festa delle Piazzette</small></div>
       </a>
-      <a class="info" href="#whatsapp-da-inserire">
+      <a class="info" href="https://wa.me/393497579812?text=Ciao%20Flavio%2C%20vorrei%20informazioni%20per%20il%20Sunset%20Beach.">
         <div class="info-ico">💬</div>
-        <div><strong>Contatti</strong>Per info e prenotazioni<br><small>Scrivici su WhatsApp</small></div>
+        <div><strong>Contatti</strong>Per info e prenotazioni<br><small>Scrivi a Flavio</small></div>
       </a>
       <a class="info" href="https://www.instagram.com/sunsetbeachcvp" target="_blank" rel="noopener">
         <div class="info-ico">📷</div>
@@ -1884,7 +2348,7 @@ a, button { font:inherit; color:inherit; }
   <nav class="bottom-nav">
     <a class="navitem active" href="#home"><span>🏠</span>Home</a>
     <a class="navitem" href="https://maps.app.goo.gl/rzuY1No6sh3mUMbD6" target="_blank" rel="noopener"><span>📍</span>Dove</a>
-    <a class="navitem" href="#whatsapp-da-inserire"><span>💬</span>Contatti</a>
+    <a class="navitem" href="https://wa.me/393497579812?text=Ciao%20Flavio%2C%20vorrei%20informazioni%20per%20il%20Sunset%20Beach."><span>💬</span>Contatti</a>
     <a class="navitem" href="https://photos.app.goo.gl/fh6GKVxKHKYqJziY6"><span>🖼️</span>Album</a>
     <a class="navitem" href="https://www.instagram.com/sunsetbeachcvp" target="_blank" rel="noopener"><span>📷</span>IG</a>
   </nav>
@@ -1913,151 +2377,12 @@ function closeEvent(e) {
 }
 </script>
 
-
-
-
-
-<style>
-.install-app-banner{
-  position:fixed;
-  z-index:9999;
-  left:50%;
-  bottom:92px;
-  transform:translateX(-50%);
-  width:min(430px,calc(100% - 24px));
-  display:none;
-  align-items:center;
-  gap:10px;
-  padding:12px 12px;
-  border-radius:22px;
-  background:rgba(8,18,37,.94);
-  color:white;
-  box-shadow:0 14px 34px rgba(0,0,0,.38);
-  backdrop-filter:blur(14px);
-  font-family:inherit;
-}
-.install-app-banner.show{display:flex;}
-.install-app-text{
-  flex:1;
-  font-size:13px;
-  line-height:1.2;
-  font-weight:800;
-}
-.install-app-text strong{
-  display:block;
-  font-size:15px;
-}
-.install-app-install{
-  border:0;
-  border-radius:999px;
-  padding:9px 12px;
-  background:linear-gradient(135deg,#ff8b00,#e02f84);
-  color:white;
-  font-weight:1000;
-  font-family:inherit;
-}
-.install-app-close{
-  width:30px;
-  height:30px;
-  border:0;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:rgba(255,255,255,.16);
-  color:white;
-  font-size:18px;
-  font-weight:900;
-  font-family:inherit;
-}
-</style>
-
-<div id="installAppBanner" class="install-app-banner">
-  <div class="install-app-text">
-    <strong>Vuoi aggiungere Sunset Beach?</strong>
-    Aprila dalla schermata Home come una vera app.
-  </div>
-  <button id="installAppBtn" class="install-app-install">Aggiungi</button>
-  <button id="installAppClose" class="install-app-close" aria-label="Chiudi">×</button>
-</div>
-
 <script>
-let sunsetDeferredPrompt = null;
-const installBanner = document.getElementById('installAppBanner');
-const installAppBtn = document.getElementById('installAppBtn');
-const installCloseBtn = document.getElementById('installAppClose');
-
-function isStandaloneMode() {
-  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-}
-
-function hideInstallBanner() {
-  installBanner?.classList.remove('show');
-}
-
-function dismissInstallBanner() {
-  localStorage.setItem('sunsetInstallDismissed', '1');
-  hideInstallBanner();
-}
-
-window.addEventListener('beforeinstallprompt', (event) => {
-  event.preventDefault();
-  sunsetDeferredPrompt = event;
-
-  const dismissed = localStorage.getItem('sunsetInstallDismissed') === '1';
-  if (!dismissed && !isStandaloneMode()) {
-    installBanner?.classList.add('show');
-  }
-});
-
-installAppBtn?.addEventListener('click', async () => {
-  if (!sunsetDeferredPrompt) return;
-  sunsetDeferredPrompt.prompt();
-  await sunsetDeferredPrompt.userChoice;
-  sunsetDeferredPrompt = null;
-  localStorage.setItem('sunsetInstallDismissed', '1');
-  hideInstallBanner();
-});
-
-installCloseBtn?.addEventListener('click', dismissInstallBanner);
-
-if (isStandaloneMode()) {
-  localStorage.setItem('sunsetInstallDismissed', '1');
-  hideInstallBanner();
-}
-
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   });
 }
-</script>
-
-
-<script>
-(function(){
-  function hideInstallPopups(){
-    localStorage.setItem('sunsetInstallDismissed','1');
-    document.querySelectorAll('#installAppBanner,.install-app-banner,#installAppBtn,.install-app-btn').forEach(function(el){
-      el.style.display = 'none';
-      el.classList.remove('show');
-    });
-  }
-
-  document.addEventListener('click', function(e){
-    const closeBtn = e.target.closest('#installAppClose,.install-app-close,[data-install-close]');
-    if(closeBtn){
-      e.preventDefault();
-      e.stopPropagation();
-      hideInstallPopups();
-    }
-  }, true);
-
-  document.addEventListener('DOMContentLoaded', function(){
-    if(localStorage.getItem('sunsetInstallDismissed') === '1'){
-      hideInstallPopups();
-    }
-  });
-})();
 </script>
 
 </body>

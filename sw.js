@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sunset-beach-pwa-v2';
+const CACHE_NAME = 'sunset-beach-v2-clean';
 const ASSETS = [
   './',
   './index.html',
@@ -26,7 +26,5 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request))
-  );
+  event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request)));
 });
