@@ -1913,34 +1913,100 @@ function closeEvent(e) {
 }
 </script>
 
+
+
+
+
 <style>
-.install-app-btn{
+.install-app-banner{
   position:fixed;
   z-index:9999;
   left:50%;
   bottom:92px;
   transform:translateX(-50%);
+  width:min(430px,calc(100% - 24px));
   display:none;
+  align-items:center;
+  gap:10px;
+  padding:12px 12px;
+  border-radius:22px;
+  background:rgba(8,18,37,.94);
+  color:white;
+  box-shadow:0 14px 34px rgba(0,0,0,.38);
+  backdrop-filter:blur(14px);
+  font-family:inherit;
+}
+.install-app-banner.show{display:flex;}
+.install-app-text{
+  flex:1;
+  font-size:13px;
+  line-height:1.2;
+  font-weight:800;
+}
+.install-app-text strong{
+  display:block;
+  font-size:15px;
+}
+.install-app-install{
   border:0;
   border-radius:999px;
-  padding:12px 18px;
+  padding:9px 12px;
   background:linear-gradient(135deg,#ff8b00,#e02f84);
   color:white;
   font-weight:1000;
-  box-shadow:0 12px 30px rgba(0,0,0,.35);
   font-family:inherit;
 }
-.install-app-btn.show{display:block;}
+.install-app-close{
+  width:30px;
+  height:30px;
+  border:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.16);
+  color:white;
+  font-size:18px;
+  font-weight:900;
+  font-family:inherit;
+}
 </style>
-<button id="installAppBtn" class="install-app-btn">Aggiungi alla schermata Home 🌅</button>
+
+<div id="installAppBanner" class="install-app-banner">
+  <div class="install-app-text">
+    <strong>Vuoi aggiungere Sunset Beach?</strong>
+    Aprila dalla schermata Home come una vera app.
+  </div>
+  <button id="installAppBtn" class="install-app-install">Aggiungi</button>
+  <button id="installAppClose" class="install-app-close" aria-label="Chiudi">×</button>
+</div>
+
 <script>
 let sunsetDeferredPrompt = null;
+const installBanner = document.getElementById('installAppBanner');
 const installAppBtn = document.getElementById('installAppBtn');
+const installCloseBtn = document.getElementById('installAppClose');
+
+function isStandaloneMode() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+
+function hideInstallBanner() {
+  installBanner?.classList.remove('show');
+}
+
+function dismissInstallBanner() {
+  localStorage.setItem('sunsetInstallDismissed', '1');
+  hideInstallBanner();
+}
 
 window.addEventListener('beforeinstallprompt', (event) => {
   event.preventDefault();
   sunsetDeferredPrompt = event;
-  installAppBtn.classList.add('show');
+
+  const dismissed = localStorage.getItem('sunsetInstallDismissed') === '1';
+  if (!dismissed && !isStandaloneMode()) {
+    installBanner?.classList.add('show');
+  }
 });
 
 installAppBtn?.addEventListener('click', async () => {
@@ -1948,8 +2014,16 @@ installAppBtn?.addEventListener('click', async () => {
   sunsetDeferredPrompt.prompt();
   await sunsetDeferredPrompt.userChoice;
   sunsetDeferredPrompt = null;
-  installAppBtn.classList.remove('show');
+  localStorage.setItem('sunsetInstallDismissed', '1');
+  hideInstallBanner();
 });
+
+installCloseBtn?.addEventListener('click', dismissInstallBanner);
+
+if (isStandaloneMode()) {
+  localStorage.setItem('sunsetInstallDismissed', '1');
+  hideInstallBanner();
+}
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
