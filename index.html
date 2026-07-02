@@ -2032,5 +2032,33 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
+
+<script>
+(function(){
+  function hideInstallPopups(){
+    localStorage.setItem('sunsetInstallDismissed','1');
+    document.querySelectorAll('#installAppBanner,.install-app-banner,#installAppBtn,.install-app-btn').forEach(function(el){
+      el.style.display = 'none';
+      el.classList.remove('show');
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    const closeBtn = e.target.closest('#installAppClose,.install-app-close,[data-install-close]');
+    if(closeBtn){
+      e.preventDefault();
+      e.stopPropagation();
+      hideInstallPopups();
+    }
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', function(){
+    if(localStorage.getItem('sunsetInstallDismissed') === '1'){
+      hideInstallPopups();
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
