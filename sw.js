@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sunset-beach-v20260708-fixed_V4';
+const CACHE_NAME = 'sunset-beach-v20260708-fixed_V5';
 const ASSETS = [
   './',
   './index.html',
