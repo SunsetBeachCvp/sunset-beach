@@ -2437,5 +2437,17 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
+
+<!-- SUNSET MUSIC START -->
+<audio id="sunsetMusic" src="musica-sunset.mp3" preload="auto" loop></audio>
+<button id="sunsetMusicToggle" class="sunset-music-toggle" type="button" aria-label="Attiva o disattiva la musica"><span class="sunset-music-icon">♪</span></button>
+<style>
+.sunset-music-toggle{position:fixed;right:14px;bottom:18px;z-index:9998;width:48px;height:48px;border:0;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,#ff8b00,#df2e83);box-shadow:0 10px 24px rgba(0,0,0,.35);cursor:pointer;transition:transform .18s ease,opacity .18s ease}.sunset-music-toggle:active{transform:scale(.94)}.sunset-music-toggle.is-muted{opacity:.58}.sunset-music-icon{font-size:25px;line-height:1;font-weight:1000}.sunset-music-toggle.is-playing .sunset-music-icon{animation:sunsetPulse 1.25s ease-in-out infinite}@keyframes sunsetPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}
+</style>
+<script>
+(function(){const audio=document.getElementById('sunsetMusic');const toggle=document.getElementById('sunsetMusicToggle');if(!audio||!toggle)return;const TARGET_VOLUME=.30;let started=false;let fading=false;audio.volume=0;function updateButton(){const playing=!audio.paused&&!audio.ended;toggle.classList.toggle('is-playing',playing);toggle.classList.toggle('is-muted',!playing);toggle.setAttribute('aria-label',playing?'Metti in pausa la musica':'Avvia la musica')}function fadeIn(){if(fading)return;fading=true;audio.volume=0;const duration=2000,stepMs=50,steps=duration/stepMs;let current=0;const timer=setInterval(function(){current++;audio.volume=Math.min(TARGET_VOLUME,TARGET_VOLUME*(current/steps));if(current>=steps){clearInterval(timer);audio.volume=TARGET_VOLUME;fading=false}},stepMs)}async function startMusic(){if(started)return;started=true;try{await audio.play();fadeIn();updateButton()}catch(e){started=false}}function firstInteraction(event){if(event.target.closest('#sunsetMusicToggle'))return;startMusic()}document.addEventListener('pointerdown',firstInteraction,{once:true,passive:true});document.addEventListener('touchstart',firstInteraction,{once:true,passive:true});document.addEventListener('click',firstInteraction,{once:true});toggle.addEventListener('click',async function(event){event.preventDefault();event.stopPropagation();if(audio.paused){try{if(!started){started=true;await audio.play();fadeIn()}else{await audio.play();audio.volume=TARGET_VOLUME}}catch(e){}}else{audio.pause()}updateButton()});audio.addEventListener('play',updateButton);audio.addEventListener('pause',updateButton);updateButton()})();
+</script>
+<!-- SUNSET MUSIC END -->
+
 </body>
 </html>
